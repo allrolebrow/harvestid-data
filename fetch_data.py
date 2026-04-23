@@ -7,9 +7,12 @@ from datetime import date
 
 def parse_harga(harga_str):
     """Ambil angka harga saja, abaikan satuan"""
-    # Ambil bagian setelah "Rp", hapus titik ribuan, ambil angka pertama saja
-    clean = harga_str.replace('Rp', '').replace('.', '').strip()
-    match = re.match(r'^(\d+)', clean.replace(' ', ''))
+    # Ambil bagian setelah "Rp"
+    after_rp = harga_str.split('Rp')[-1].strip()
+    # Hapus titik ribuan (titik diikuti 3 digit)
+    clean = re.sub(r'\.(\d{3})', r'\1', after_rp)
+    # Ambil angka di awal saja (sebelum spasi atau huruf)
+    match = re.match(r'^(\d+)', clean.strip())
     return int(match.group(1)) if match else 0
 
 def fetch_kota_malang():
