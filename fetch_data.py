@@ -2,7 +2,15 @@ import requests
 from bs4 import BeautifulSoup
 import json
 import os
+import re
 from datetime import date
+
+def parse_harga(harga_str):
+    """Ambil angka harga saja, abaikan satuan"""
+    # Ambil bagian setelah "Rp", hapus titik ribuan, ambil angka pertama saja
+    clean = harga_str.replace('Rp', '').replace('.', '').strip()
+    match = re.match(r'^(\d+)', clean.replace(' ', ''))
+    return int(match.group(1)) if match else 0
 
 def fetch_kota_malang():
     print("Fetching Kota Malang...")
@@ -18,8 +26,7 @@ def fetch_kota_malang():
             if nama and harga:
                 nama_str = nama.text.strip()
                 harga_str = harga.text.strip()
-                # Bersihkan harga: "Rp 15.020Kg" -> 15020
-                harga_num = int(''.join(filter(str.isdigit, harga_str.split('Rp')[-1][:10])))
+                harga_num = parse_harga(harga_str)
                 hasil[nama_str] = {
                     "harga": harga_num,
                     "harga_raw": harga_str,
@@ -34,7 +41,6 @@ def fetch_kota_malang():
 def fetch_pihps_nasional():
     print("Fetching PIHPS Nasional...")
     try:
-        from datetime import date, timedelta
         today = date.today().strftime("%d/%m/%Y")
         r = requests.post(
             "https://www.bi.go.id/hargapangan/Home/GetGridData",
