@@ -3,16 +3,13 @@ from bs4 import BeautifulSoup
 import json
 import os
 import re
-from datetime import date
+from datetime import date, timedelta
 
 def parse_harga(harga_str):
-    """Parse harga dengan deteksi pola titik ribuan"""
     after_rp = harga_str.split('Rp')[-1].strip()
-    # Cari pola harga: angka dengan titik ribuan (contoh: 43.000, 126.800, 13.000)
     match = re.search(r'(\d{1,3}(?:\.\d{3})+)', after_rp)
     if match:
         return int(match.group(1).replace('.', ''))
-    # Fallback: angka biasa tanpa titik
     match2 = re.search(r'(\d+)', after_rp)
     return int(match2.group(1)) if match2 else 0
 
@@ -20,8 +17,7 @@ def fetch_kota_malang():
     print("Fetching Kota Malang...")
     try:
         r = requests.get("https://sembako.malangkota.go.id", 
-            headers={'User-Agent': 'Mozilla/5.0'},
-            timeout=15)
+            headers={'User-Agent': 'Mozilla/5.0'}, timeout=15)
         soup = BeautifulSoup(r.text, 'html.parser')
         hasil = {}
         for item in soup.select('li.products'):
@@ -42,66 +38,12 @@ def fetch_kota_malang():
         print(f"Error Kota Malang: {e}")
         return {}
 
-def fetch_pihps_nasional():
-    print("Fetching PIHPS Nasional...")
-    try:
-        from datetime import date
-        import urllib.parse, time
-        today = date.today().strftime("%b %d, %Y")
-        today_encoded = urllib.parse.quote(today)
-        
-        tree_url = "https://www.bi.go.id/hargapangan/WebSite/Home/GetCommoditiesTree"
-        r_tree = requests.get(tree_url, headers={
-            'User-Agent': 'Mozilla/5.0',
-            'Referer': 'https://www.bi.go.id/hargapangan',
-        }, timeout=15)
-        tree = r_tree.json().get('data', [])
-        
-        # Ambil hanya komoditas utama (ParentID = None dan HasCom = 1)
-        komoditas_utama = [t for t in tree if t.get('ParentID') is None and t.get('HasCom') == 1]
-        print(f"Komoditas utama: {len(komoditas_utama)}")
-        
-        hasil = {}
-        for com in komoditas_utama[:2]:  # Test 2 dulu
-            com_id = com['TreeID']
-            com_nama = com['TreeName']
-            
-            url = f"https://www.bi.go.id/hargapangan/WebSite/Home/GetGridData1?tanggal={today_encoded}&commodity={com_id}&priceType=1&isPasokan=1&jenis=1&periode=1&provId=0&_=1234567890"
-            r = requests.get(url, headers={
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
-                'Referer': 'https://www.bi.go.id/hargapangan',
-                'X-Requested-With': 'XMLHttpRequest',
-                'Accept': 'application/json, text/javascript, */*; q=0.01',
-                'Accept-Language': 'id-ID,id;q=0.9,en-US;q=0.8',
-                'Cookie': ''
-            }, timeout=15)
-            print(f"Status: {r.status_code}, Length: {len(r.text)}, Preview: {r.text[:100]}")
-            
-            items = r.json()
-            if isinstance(items, dict):
-                items = items.get('data', [])
-            
-            print(f"{com_nama}: {len(items)} rows")
-            if items:
-                print(f"Keys: {list(items[0].keys())}")
-                print(f"Sample: {items[0]}")
-            
-            time.sleep(0.3)
-        
-        print(f"PIHPS Nasional: {len(hasil)} komoditas")
-        return hasil
-    except Exception as e:
-        print(f"Error PIHPS: {e}")
-        return {}
-
 def fetch_sp2kp(kode_kab_kota, kode_provinsi, nama_wilayah):
     print(f"Fetching SP2KP {nama_wilayah}...")
     try:
-        from datetime import date, timedelta
-        today_iso = date.today().isoformat()  # 2026-04-24
+        today_iso = date.today().isoformat()
         yesterday_iso = (date.today() - timedelta(days=1)).isoformat()
         
-        # Coba sebagai form data
         r = requests.post(
             "https://api-sp2kp.kemendag.go.id/report/api/average-price/generate-perbandingan-harga",
             data={
@@ -117,26 +59,84 @@ def fetch_sp2kp(kode_kab_kota, kode_provinsi, nama_wilayah):
             },
             timeout=15
         )
-        print(f"Status: {r.status_code}, Response: {r.text[:500]}")
-        return r.json()
+        data = r.json()
+        items = data.get('data', [])
+        
+        hasil = {}
+        for item in items:
+            nama = item.get('variant_nama', '')
+            harga = item.get('harga', 0) or item.get('harga_pembanding', 0)
+            harga_lama = item.get('harga_pembanding', 0)
+            if nama and harga:
+                hasil[nama] = {
+                    "harga": harga,
+                    "harga_lama": harga_lama,
+                    "satuan": item.get('satuan_display', 'kg'),
+                    "tanggal": today_iso
+                }
+        print(f"SP2KP {nama_wilayah}: {len(hasil)} komoditas")
+        return hasil
     except Exception as e:
         print(f"Error SP2KP {nama_wilayah}: {e}")
         return {}
 
-# Test di bagian bawah sebelum simpan JSON
-kota_batu = fetch_sp2kp("3579", "35", "Kota Batu")
-print(f"Kota Batu keys: {list(kota_batu.keys()) if kota_batu else 'kosong'}")
+def fetch_pihps_nasional():
+    print("Fetching PIHPS via SP2KP Nasional...")
+    try:
+        today_iso = date.today().isoformat()
+        yesterday_iso = (date.today() - timedelta(days=1)).isoformat()
+        
+        # Fetch data nasional (semua provinsi = kode_provinsi 0, kode_kab_kota 0)
+        r = requests.post(
+            "https://api-sp2kp.kemendag.go.id/report/api/average-price/generate-perbandingan-harga",
+            data={
+                "tanggal": today_iso,
+                "tanggal_pembanding": yesterday_iso,
+                "kode_provinsi": "0",
+                "kode_kab_kota": "0"
+            },
+            headers={
+                'User-Agent': 'Mozilla/5.0',
+                'Origin': 'https://sp2kp.kemendag.go.id',
+                'Referer': 'https://sp2kp.kemendag.go.id/'
+            },
+            timeout=15
+        )
+        data = r.json()
+        items = data.get('data', [])
+        
+        hasil = {}
+        for item in items:
+            nama = item.get('variant_nama', '')
+            harga = item.get('harga', 0) or item.get('harga_pembanding', 0)
+            harga_lama = item.get('harga_pembanding', 0)
+            if nama and harga:
+                hasil[nama] = {
+                    "harga": harga,
+                    "harga_lama": harga_lama,
+                    "satuan": item.get('satuan_display', 'kg'),
+                    "tanggal": today_iso
+                }
+        print(f"SP2KP Nasional: {len(hasil)} komoditas")
+        return hasil
+    except Exception as e:
+        print(f"Error SP2KP Nasional: {e}")
+        return {}
 
 # Buat folder data
 os.makedirs('data', exist_ok=True)
 
 # Fetch semua
 kota_malang = fetch_kota_malang()
+kota_batu = fetch_sp2kp("3579", "35", "Kota Batu")
 pihps = fetch_pihps_nasional()
 
 # Simpan ke JSON
 with open('data/kota_malang.json', 'w') as f:
     json.dump({"updated": date.today().isoformat(), "data": kota_malang}, f, ensure_ascii=False, indent=2)
+
+with open('data/kota_batu.json', 'w') as f:
+    json.dump({"updated": date.today().isoformat(), "data": kota_batu}, f, ensure_ascii=False, indent=2)
 
 with open('data/pihps_nasional.json', 'w') as f:
     json.dump({"updated": date.today().isoformat(), "data": pihps}, f, ensure_ascii=False, indent=2)
