@@ -46,7 +46,7 @@ def fetch_pihps_nasional():
     print("Fetching PIHPS Nasional...")
     try:
         from datetime import date
-        import urllib.parse
+        import urllib.parse, time
         today = date.today().strftime("%b %d, %Y")
         today_encoded = urllib.parse.quote(today)
         
@@ -55,10 +55,40 @@ def fetch_pihps_nasional():
             'User-Agent': 'Mozilla/5.0',
             'Referer': 'https://www.bi.go.id/hargapangan',
         }, timeout=15)
-        print(f"Tree response: {r_tree.text[:300]}")
-        commodities = r_tree.json()
-        print(f"Type: {type(commodities)}, content: {str(commodities)[:200]}")
-        return {}
+        tree = r_tree.json().get('data', [])
+        
+        # Ambil hanya komoditas utama (ParentID = None dan HasCom = 1)
+        komoditas_utama = [t for t in tree if t.get('ParentID') is None and t.get('HasCom') == 1]
+        print(f"Komoditas utama: {len(komoditas_utama)}")
+        
+        hasil = {}
+        for com in komoditas_utama:
+            com_id = com['TreeID']
+            com_nama = com['TreeName']
+            
+            url = f"https://www.bi.go.id/hargapangan/WebSite/Home/GetGridData1?tanggal={today_encoded}&commodity={com_id}&priceType=1&isPasokan=1&jenis=1&periode=1&provId=0&_=1234567890"
+            r = requests.get(url, headers={
+                'User-Agent': 'Mozilla/5.0',
+                'Referer': 'https://www.bi.go.id/hargapangan',
+                'X-Requested-With': 'XMLHttpRequest'
+            }, timeout=15)
+            
+            items = r.json()
+            if isinstance(items, dict):
+                items = items.get('data', [])
+            
+            for item in items:
+                if item.get('SemuaProvinsi'):
+                    hasil[com_nama] = {
+                        "harga": float(item.get('SemuaProvinsi', 0)),
+                        "tanggal": date.today().isoformat()
+                    }
+                    break
+            
+            time.sleep(0.3)  # Jangan terlalu cepat
+        
+        print(f"PIHPS Nasional: {len(hasil)} komoditas")
+        return hasil
     except Exception as e:
         print(f"Error PIHPS: {e}")
         return {}
