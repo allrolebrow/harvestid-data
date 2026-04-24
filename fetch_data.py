@@ -87,13 +87,13 @@ def fetch_pihps_nasional():
         yesterday_iso = (date.today() - timedelta(days=1)).isoformat()
         
         # Fetch data nasional (semua provinsi = kode_provinsi 0, kode_kab_kota 0)
-        r = requests.post(
+       r = requests.post(
             "https://api-sp2kp.kemendag.go.id/report/api/average-price/generate-perbandingan-harga",
             data={
                 "tanggal": today_iso,
                 "tanggal_pembanding": yesterday_iso,
-                "kode_provinsi": "0",
-                "kode_kab_kota": "0"
+                "kode_provinsi": "35",
+                "kode_kab_kota": ""
             },
             headers={
                 'User-Agent': 'Mozilla/5.0',
