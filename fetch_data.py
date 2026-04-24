@@ -51,13 +51,13 @@ def fetch_pihps_nasional():
         today_encoded = urllib.parse.quote(today)
         
         # Ambil daftar komoditas dulu
-        tree_url = "https://www.bi.go.id/hargapangan/WebSite/Home/GetCommoditiesTree"
         r_tree = requests.get(tree_url, headers={
             'User-Agent': 'Mozilla/5.0',
             'Referer': 'https://www.bi.go.id/hargapangan',
         }, timeout=15)
+        print(f"Tree response: {r_tree.text[:300]}")
         commodities = r_tree.json()
-        print(f"Total komoditas: {len(commodities)}")
+        print(f"Type: {type(commodities)}, content: {commodities}")
         
         hasil = {}
         for com in commodities:
