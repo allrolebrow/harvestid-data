@@ -68,10 +68,14 @@ def fetch_pihps_nasional():
             
             url = f"https://www.bi.go.id/hargapangan/WebSite/Home/GetGridData1?tanggal={today_encoded}&commodity={com_id}&priceType=1&isPasokan=1&jenis=1&periode=1&provId=0&_=1234567890"
             r = requests.get(url, headers={
-                'User-Agent': 'Mozilla/5.0',
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
                 'Referer': 'https://www.bi.go.id/hargapangan',
-                'X-Requested-With': 'XMLHttpRequest'
+                'X-Requested-With': 'XMLHttpRequest',
+                'Accept': 'application/json, text/javascript, */*; q=0.01',
+                'Accept-Language': 'id-ID,id;q=0.9,en-US;q=0.8',
+                'Cookie': ''
             }, timeout=15)
+            print(f"Status: {r.status_code}, Length: {len(r.text)}, Preview: {r.text[:100]}")
             
             items = r.json()
             if isinstance(items, dict):
