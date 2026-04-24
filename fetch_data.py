@@ -98,24 +98,20 @@ def fetch_sp2kp(kode_kab_kota, kode_provinsi, nama_wilayah):
     print(f"Fetching SP2KP {nama_wilayah}...")
     try:
         from datetime import date, timedelta
-        today = date.today().strftime("%d/%m/%Y")
-        yesterday = (date.today() - timedelta(days=1)).strftime("%d/%m/%Y")
-        print(f"Tanggal: {today}, Pembanding: {yesterday}")
+        today_iso = date.today().isoformat()  # 2026-04-24
+        yesterday_iso = (date.today() - timedelta(days=1)).isoformat()
         
-        payload = {
-            "tanggal": today,
-            "tanggal_pembanding": yesterday,
-            "kode_provinsi": kode_provinsi,
-            "kode_kab_kota": kode_kab_kota
-        }
-        print(f"Payload: {payload}")
-        
+        # Coba sebagai form data
         r = requests.post(
             "https://api-sp2kp.kemendag.go.id/report/api/average-price/generate-perbandingan-harga",
-            json=payload,
+            data={
+                "tanggal": today_iso,
+                "tanggal_pembanding": yesterday_iso,
+                "kode_provinsi": kode_provinsi,
+                "kode_kab_kota": kode_kab_kota
+            },
             headers={
                 'User-Agent': 'Mozilla/5.0',
-                'Content-Type': 'application/json',
                 'Origin': 'https://sp2kp.kemendag.go.id',
                 'Referer': 'https://sp2kp.kemendag.go.id/'
             },
