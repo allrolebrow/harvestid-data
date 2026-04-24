@@ -93,6 +93,40 @@ def fetch_pihps_nasional():
     except Exception as e:
         print(f"Error PIHPS: {e}")
         return {}
+
+def fetch_sp2kp(kode_kab_kota, kode_provinsi, nama_wilayah):
+    print(f"Fetching SP2KP {nama_wilayah}...")
+    try:
+        from datetime import date, timedelta
+        today = date.today().isoformat()
+        yesterday = (date.today() - timedelta(days=1)).isoformat()
+        
+        r = requests.post(
+            "https://api-sp2kp.kemendag.go.id/report/api/average-price/generate-perbandingan-harga",
+            json={
+                "tanggal": today,
+                "tanggal_pembanding": yesterday,
+                "kode_provinsi": kode_provinsi,
+                "kode_kab_kota": kode_kab_kota
+            },
+            headers={
+                'User-Agent': 'Mozilla/5.0',
+                'Content-Type': 'application/json',
+                'Origin': 'https://sp2kp.kemendag.go.id',
+                'Referer': 'https://sp2kp.kemendag.go.id/'
+            },
+            timeout=15
+        )
+        print(f"Status: {r.status_code}, Preview: {r.text[:300]}")
+        return r.json()
+    except Exception as e:
+        print(f"Error SP2KP {nama_wilayah}: {e}")
+        return {}
+
+# Test di bagian bawah sebelum simpan JSON
+kota_batu = fetch_sp2kp("3579", "35", "Kota Batu")
+print(f"Kota Batu keys: {list(kota_batu.keys()) if kota_batu else 'kosong'}")
+
 # Buat folder data
 os.makedirs('data', exist_ok=True)
 
