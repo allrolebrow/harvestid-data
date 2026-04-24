@@ -62,7 +62,7 @@ def fetch_pihps_nasional():
         print(f"Komoditas utama: {len(komoditas_utama)}")
         
         hasil = {}
-        for com in komoditas_utama:
+        for com in komoditas_utama[:2]:  # Test 2 dulu
             com_id = com['TreeID']
             com_nama = com['TreeName']
             
@@ -77,15 +77,12 @@ def fetch_pihps_nasional():
             if isinstance(items, dict):
                 items = items.get('data', [])
             
-            for item in items:
-                if item.get('SemuaProvinsi'):
-                    hasil[com_nama] = {
-                        "harga": float(item.get('SemuaProvinsi', 0)),
-                        "tanggal": date.today().isoformat()
-                    }
-                    break
+            print(f"{com_nama}: {len(items)} rows")
+            if items:
+                print(f"Keys: {list(items[0].keys())}")
+                print(f"Sample: {items[0]}")
             
-            time.sleep(0.3)  # Jangan terlalu cepat
+            time.sleep(0.3)
         
         print(f"PIHPS Nasional: {len(hasil)} komoditas")
         return hasil
