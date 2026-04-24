@@ -100,15 +100,19 @@ def fetch_sp2kp(kode_kab_kota, kode_provinsi, nama_wilayah):
         from datetime import date, timedelta
         today = date.today().strftime("%d/%m/%Y")
         yesterday = (date.today() - timedelta(days=1)).strftime("%d/%m/%Y")
+        print(f"Tanggal: {today}, Pembanding: {yesterday}")
+        
+        payload = {
+            "tanggal": today,
+            "tanggal_pembanding": yesterday,
+            "kode_provinsi": kode_provinsi,
+            "kode_kab_kota": kode_kab_kota
+        }
+        print(f"Payload: {payload}")
         
         r = requests.post(
             "https://api-sp2kp.kemendag.go.id/report/api/average-price/generate-perbandingan-harga",
-            json={
-                "tanggal": today,
-                "tanggal_pembanding": yesterday,
-                "kode_provinsi": kode_provinsi,
-                "kode_kab_kota": kode_kab_kota
-            },
+            json=payload,
             headers={
                 'User-Agent': 'Mozilla/5.0',
                 'Content-Type': 'application/json',
@@ -117,7 +121,7 @@ def fetch_sp2kp(kode_kab_kota, kode_provinsi, nama_wilayah):
             },
             timeout=15
         )
-        print(f"Status: {r.status_code}, Preview: {r.text[:300]}")
+        print(f"Status: {r.status_code}, Response: {r.text[:500]}")
         return r.json()
     except Exception as e:
         print(f"Error SP2KP {nama_wilayah}: {e}")
