@@ -46,8 +46,8 @@ def fetch_pihps_nasional():
     print("Fetching PIHPS Nasional...")
     try:
         from datetime import date
-        today = date.today().strftime("%b %d, %Y")  # Format: Apr 24, 2026
         import urllib.parse
+        today = date.today().strftime("%b %d, %Y")
         today_encoded = urllib.parse.quote(today)
         
         url = f"https://www.bi.go.id/hargapangan/WebSite/Home/GetGridData1?tanggal={today_encoded}&commodity=1&priceType=1&isPasokan=1&jenis=1&periode=1&provId=0&_=1234567890"
@@ -58,16 +58,18 @@ def fetch_pihps_nasional():
             'X-Requested-With': 'XMLHttpRequest'
         }, timeout=15)
         
-        print(f"Status: {r.status_code}")
-        print(f"Response: {r.text[:500]}")
+        wrapper = r.json()
+        items = wrapper.get('data', []) if isinstance(wrapper, dict) else wrapper
         
-        data = r.json()
+        # Ambil rata-rata nasional (SemuaProvinsi) per komoditas
         hasil = {}
-        for item in data:
-            hasil[item.get('Komoditas', '')] = {
-                "harga": item.get('Harga', 0),
-                "tanggal": date.today().isoformat()
-            }
+        for item in items:
+            komoditas = item.get('Komoditas', '')
+            if komoditas and komoditas not in hasil:
+                hasil[komoditas] = {
+                    "harga": item.get('SemuaProvinsi', 0),
+                    "tanggal": date.today().isoformat()
+                }
         print(f"PIHPS Nasional: {len(hasil)} komoditas")
         return hasil
     except Exception as e:
