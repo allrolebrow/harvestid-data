@@ -99,7 +99,7 @@ def fetch_sp2kp(kode_kab_kota, kode_provinsi, nama_wilayah):
     try:
         from datetime import date, timedelta
         today = date.today().strftime("%d/%m/%Y")
-yesterday = (date.today() - timedelta(days=1)).strftime("%d/%m/%Y")
+        yesterday = (date.today() - timedelta(days=1)).strftime("%d/%m/%Y")
         
         r = requests.post(
             "https://api-sp2kp.kemendag.go.id/report/api/average-price/generate-perbandingan-harga",
