@@ -50,26 +50,41 @@ def fetch_pihps_nasional():
         today = date.today().strftime("%b %d, %Y")
         today_encoded = urllib.parse.quote(today)
         
-        url = f"https://www.bi.go.id/hargapangan/WebSite/Home/GetGridData1?tanggal={today_encoded}&commodity=1&priceType=1&isPasokan=1&jenis=1&periode=1&provId=0&_=1234567890"
-        
-        r = requests.get(url, headers={
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+        # Ambil daftar komoditas dulu
+        tree_url = "https://www.bi.go.id/hargapangan/WebSite/Home/GetCommoditiesTree"
+        r_tree = requests.get(tree_url, headers={
+            'User-Agent': 'Mozilla/5.0',
             'Referer': 'https://www.bi.go.id/hargapangan',
-            'X-Requested-With': 'XMLHttpRequest'
         }, timeout=15)
+        commodities = r_tree.json()
+        print(f"Total komoditas: {len(commodities)}")
         
-        wrapper = r.json()
-        items = wrapper.get('data', []) if isinstance(wrapper, dict) else wrapper
-        
-        # Ambil rata-rata nasional (SemuaProvinsi) per komoditas
         hasil = {}
-        for item in items:
-            komoditas = item.get('Komoditas', '')
-            if komoditas and komoditas not in hasil:
-                hasil[komoditas] = {
-                    "harga": item.get('SemuaProvinsi', 0),
-                    "tanggal": date.today().isoformat()
-                }
+        for com in commodities:
+            com_id = com.get('id') or com.get('Id') or com.get('ID')
+            com_nama = com.get('text') or com.get('Text') or com.get('nama') or str(com_id)
+            if not com_id:
+                continue
+            
+            url = f"https://www.bi.go.id/hargapangan/WebSite/Home/GetGridData1?tanggal={today_encoded}&commodity={com_id}&priceType=1&isPasokan=1&jenis=1&periode=1&provId=0&_=1234567890"
+            r = requests.get(url, headers={
+                'User-Agent': 'Mozilla/5.0',
+                'Referer': 'https://www.bi.go.id/hargapangan',
+                'X-Requested-With': 'XMLHttpRequest'
+            }, timeout=15)
+            
+            items = r.json()
+            if isinstance(items, dict):
+                items = items.get('data', [])
+            
+            for item in items:
+                if item.get('SemuaProvinsi'):
+                    hasil[com_nama] = {
+                        "harga": item.get('SemuaProvinsi', 0),
+                        "tanggal": date.today().isoformat()
+                    }
+                    break
+        
         print(f"PIHPS Nasional: {len(hasil)} komoditas")
         return hasil
     except Exception as e:
