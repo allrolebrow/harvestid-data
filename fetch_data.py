@@ -45,30 +45,27 @@ def fetch_kota_malang():
 def fetch_pihps_nasional():
     print("Fetching PIHPS Nasional...")
     try:
-        today = date.today().strftime("%d/%m/%Y")
-        r = requests.post(
-            "https://www.bi.go.id/hargapangan/Home/GetGridData",
-            data={
-                "tipe": "1",
-                "komoditas": "0",
-                "provinsi": "0",
-                "kota": "0",
-                "tanggalMulai": today,
-                "tanggalSelesai": today
-            },
-            headers={
-                'User-Agent': 'Mozilla/5.0',
-                'Referer': 'https://www.bi.go.id/hargapangan',
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            timeout=15
-        )
+        from datetime import date
+        today = date.today().strftime("%b %d, %Y")  # Format: Apr 24, 2026
+        import urllib.parse
+        today_encoded = urllib.parse.quote(today)
+        
+        url = f"https://www.bi.go.id/hargapangan/WebSite/Home/GetGridData1?tanggal={today_encoded}&commodity=1&priceType=1&isPasokan=1&jenis=1&periode=1&provId=0&_=1234567890"
+        
+        r = requests.get(url, headers={
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+            'Referer': 'https://www.bi.go.id/hargapangan',
+            'X-Requested-With': 'XMLHttpRequest'
+        }, timeout=15)
+        
+        print(f"Status: {r.status_code}")
+        print(f"Response: {r.text[:500]}")
+        
         data = r.json()
         hasil = {}
-        for item in data.get('data', []):
-            hasil[item.get('id', '')] = {
-                "nama": item.get('nama', ''),
-                "harga": item.get('harga', 0),
+        for item in data:
+            hasil[item.get('Komoditas', '')] = {
+                "harga": item.get('Harga', 0),
                 "tanggal": date.today().isoformat()
             }
         print(f"PIHPS Nasional: {len(hasil)} komoditas")
@@ -76,7 +73,6 @@ def fetch_pihps_nasional():
     except Exception as e:
         print(f"Error PIHPS: {e}")
         return {}
-
 # Buat folder data
 os.makedirs('data', exist_ok=True)
 
