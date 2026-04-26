@@ -32,9 +32,9 @@ def get_working_dates():
 
 def fetch_kota_malang():
     print("Fetching Kota Malang...")
+    old_data = load_old('kota_malang')
     try:
-        old_data = load_old('kota_malang')
-        r = requests.get("https://sembako.malangkota.go.id",
+        r = requests.get("https://sembako.malangkota.go.id", 
             headers={'User-Agent': 'Mozilla/5.0'}, timeout=15)
         soup = BeautifulSoup(r.text, 'html.parser')
         hasil = {}
@@ -52,11 +52,15 @@ def fetch_kota_malang():
                     "harga_raw": harga_str,
                     "tanggal": date.today().isoformat()
                 }
-        print(f"Kota Malang: {len(hasil)} komoditas")
-        return hasil
+        if hasil:
+            print(f"Kota Malang: {len(hasil)} komoditas")
+            return hasil
+        else:
+            print("Kota Malang: scrape kosong, pakai data lama")
+            return old_data
     except Exception as e:
-        print(f"Error Kota Malang: {e}")
-        return {}
+        print(f"Error Kota Malang: {e}, pakai data lama")
+        return old_data
 
 def fetch_sp2kp(kode_kab_kota, kode_provinsi, nama_wilayah, filename):
     print(f"Fetching SP2KP {nama_wilayah}...")
