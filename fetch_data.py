@@ -13,9 +13,17 @@ def parse_harga(harga_str):
     match2 = re.search(r'(\d+)', after_rp)
     return int(match2.group(1)) if match2 else 0
 
+def load_old(filename):
+    try:
+        with open(f'data/{filename}.json') as f:
+            return json.load(f).get('data', {})
+    except:
+        return {}
+
 def fetch_kota_malang():
     print("Fetching Kota Malang...")
     try:
+        old_data = load_old('kota_malang')
         r = requests.get("https://sembako.malangkota.go.id", 
             headers={'User-Agent': 'Mozilla/5.0'}, timeout=15)
         soup = BeautifulSoup(r.text, 'html.parser')
@@ -27,8 +35,10 @@ def fetch_kota_malang():
                 nama_str = nama.text.strip()
                 harga_str = harga.text.strip()
                 harga_num = parse_harga(harga_str)
+                harga_lama = old_data.get(nama_str, {}).get('harga', harga_num)
                 hasil[nama_str] = {
                     "harga": harga_num,
+                    "harga_lama": harga_lama,
                     "harga_raw": harga_str,
                     "tanggal": date.today().isoformat()
                 }
@@ -38,7 +48,7 @@ def fetch_kota_malang():
         print(f"Error Kota Malang: {e}")
         return {}
 
-def fetch_sp2kp(kode_kab_kota, kode_provinsi, nama_wilayah):
+def fetch_sp2kp(kode_kab_kota, kode_provinsi, nama_wilayah, filename):
     print(f"Fetching SP2KP {nama_wilayah}...")
     try:
         today_iso = date.today().isoformat()
@@ -66,7 +76,7 @@ def fetch_sp2kp(kode_kab_kota, kode_provinsi, nama_wilayah):
         for item in items:
             nama = item.get('variant_nama', '')
             harga = item.get('harga', 0) or item.get('harga_pembanding', 0)
-            harga_lama = item.get('harga_pembanding', 0)
+            harga_lama = item.get('harga_pembanding', 0) or harga
             if nama and harga:
                 hasil[nama] = {
                     "harga": harga,
@@ -81,53 +91,15 @@ def fetch_sp2kp(kode_kab_kota, kode_provinsi, nama_wilayah):
         return {}
 
 def fetch_pihps_nasional():
-    print("Fetching PIHPS via SP2KP Nasional...")
-    try:
-        today_iso = date.today().isoformat()
-        yesterday_iso = (date.today() - timedelta(days=1)).isoformat()
-        
-        r = requests.post(
-            "https://api-sp2kp.kemendag.go.id/report/api/average-price/generate-perbandingan-harga",
-            data={
-                "tanggal": today_iso,
-                "tanggal_pembanding": yesterday_iso,
-                "kode_provinsi": "35",
-                "kode_kab_kota": ""
-            },
-            headers={
-                'User-Agent': 'Mozilla/5.0',
-                'Origin': 'https://sp2kp.kemendag.go.id',
-                'Referer': 'https://sp2kp.kemendag.go.id/'
-            },
-            timeout=15
-        )
-        data = r.json()
-        items = data.get('data', [])
-        
-        hasil = {}
-        for item in items:
-            nama = item.get('variant_nama', '')
-            harga = item.get('harga', 0) or item.get('harga_pembanding', 0)
-            harga_lama = item.get('harga_pembanding', 0)
-            if nama and harga:
-                hasil[nama] = {
-                    "harga": harga,
-                    "harga_lama": harga_lama,
-                    "satuan": item.get('satuan_display', 'kg'),
-                    "tanggal": today_iso
-                }
-        print(f"SP2KP Nasional: {len(hasil)} komoditas")
-        return hasil
-    except Exception as e:
-        print(f"Error SP2KP Nasional: {e}")
-        return {}
+    print("Fetching SP2KP Nasional...")
+    return fetch_sp2kp("", "35", "Nasional", "pihps_nasional")
 
 # Buat folder data
 os.makedirs('data', exist_ok=True)
 
 # Fetch semua
 kota_malang = fetch_kota_malang()
-kota_batu = fetch_sp2kp("3579", "35", "Kota Batu")
+kota_batu = fetch_sp2kp("3579", "35", "Kota Batu", "kota_batu")
 pihps = fetch_pihps_nasional()
 
 # Simpan ke JSON
