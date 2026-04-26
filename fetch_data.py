@@ -86,7 +86,6 @@ def fetch_sp2kp(kode_kab_kota, kode_provinsi, nama_wilayah, filename):
         data = r.json()
         items = data.get('data', [])
 
-        # Kalau masih kosong, fallback ke data lama
         if not items:
             print(f"  Data kosong, pakai data lama")
             old = load_old(filename)
@@ -114,7 +113,6 @@ def fetch_sp2kp(kode_kab_kota, kode_provinsi, nama_wilayah, filename):
         return load_old(filename)
 
 def fetch_pihps_nasional():
-    print("Fetching SP2KP Nasional...")
     return fetch_sp2kp("", "35", "Nasional", "pihps_nasional")
 
 # Buat folder data
