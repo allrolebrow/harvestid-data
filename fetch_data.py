@@ -20,11 +20,21 @@ def load_old(filename):
     except:
         return {}
 
+def get_working_dates():
+    """Kalau weekend, mundur ke hari Jumat"""
+    today = date.today()
+    if today.weekday() == 5:  # Sabtu
+        today = today - timedelta(days=1)
+    elif today.weekday() == 6:  # Minggu
+        today = today - timedelta(days=2)
+    yesterday = today - timedelta(days=1)
+    return today.isoformat(), yesterday.isoformat()
+
 def fetch_kota_malang():
     print("Fetching Kota Malang...")
     try:
         old_data = load_old('kota_malang')
-        r = requests.get("https://sembako.malangkota.go.id", 
+        r = requests.get("https://sembako.malangkota.go.id",
             headers={'User-Agent': 'Mozilla/5.0'}, timeout=15)
         soup = BeautifulSoup(r.text, 'html.parser')
         hasil = {}
@@ -51,9 +61,9 @@ def fetch_kota_malang():
 def fetch_sp2kp(kode_kab_kota, kode_provinsi, nama_wilayah, filename):
     print(f"Fetching SP2KP {nama_wilayah}...")
     try:
-        today_iso = date.today().isoformat()
-        yesterday_iso = (date.today() - timedelta(days=1)).isoformat()
-        
+        today_iso, yesterday_iso = get_working_dates()
+        print(f"  Pakai tanggal: {today_iso} vs {yesterday_iso}")
+
         r = requests.post(
             "https://api-sp2kp.kemendag.go.id/report/api/average-price/generate-perbandingan-harga",
             data={
@@ -71,7 +81,16 @@ def fetch_sp2kp(kode_kab_kota, kode_provinsi, nama_wilayah, filename):
         )
         data = r.json()
         items = data.get('data', [])
-        
+
+        # Kalau masih kosong, fallback ke data lama
+        if not items:
+            print(f"  Data kosong, pakai data lama")
+            old = load_old(filename)
+            if old:
+                print(f"  Fallback: {len(old)} komoditas dari file lama")
+                return old
+            return {}
+
         hasil = {}
         for item in items:
             nama = item.get('variant_nama', '')
@@ -88,7 +107,7 @@ def fetch_sp2kp(kode_kab_kota, kode_provinsi, nama_wilayah, filename):
         return hasil
     except Exception as e:
         print(f"Error SP2KP {nama_wilayah}: {e}")
-        return {}
+        return load_old(filename)
 
 def fetch_pihps_nasional():
     print("Fetching SP2KP Nasional...")
@@ -102,14 +121,17 @@ kota_malang = fetch_kota_malang()
 kota_batu = fetch_sp2kp("3579", "35", "Kota Batu", "kota_batu")
 pihps = fetch_pihps_nasional()
 
-# Simpan ke JSON
-with open('data/kota_malang.json', 'w') as f:
-    json.dump({"updated": date.today().isoformat(), "data": kota_malang}, f, ensure_ascii=False, indent=2)
+# Simpan ke JSON (hanya kalau ada data)
+if kota_malang:
+    with open('data/kota_malang.json', 'w') as f:
+        json.dump({"updated": date.today().isoformat(), "data": kota_malang}, f, ensure_ascii=False, indent=2)
 
-with open('data/kota_batu.json', 'w') as f:
-    json.dump({"updated": date.today().isoformat(), "data": kota_batu}, f, ensure_ascii=False, indent=2)
+if kota_batu:
+    with open('data/kota_batu.json', 'w') as f:
+        json.dump({"updated": date.today().isoformat(), "data": kota_batu}, f, ensure_ascii=False, indent=2)
 
-with open('data/pihps_nasional.json', 'w') as f:
-    json.dump({"updated": date.today().isoformat(), "data": pihps}, f, ensure_ascii=False, indent=2)
+if pihps:
+    with open('data/pihps_nasional.json', 'w') as f:
+        json.dump({"updated": date.today().isoformat(), "data": pihps}, f, ensure_ascii=False, indent=2)
 
 print("Selesai!")
