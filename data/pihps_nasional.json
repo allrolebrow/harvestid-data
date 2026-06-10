@@ -1,107 +1,107 @@
 {
-  "updated": "2026-06-09",
+  "updated": "2026-06-10",
   "data": {
     "Beras Medium": {
-      "harga": 13021,
-      "harga_lama": 13027,
+      "harga": 13001,
+      "harga_lama": 13021,
       "satuan": "kg",
-      "tanggal": "2026-06-09"
+      "tanggal": "2026-06-10"
     },
     "Beras Premium": {
-      "harga": 14743,
+      "harga": 14766,
       "harga_lama": 14743,
       "satuan": "kg",
-      "tanggal": "2026-06-09"
+      "tanggal": "2026-06-10"
     },
     "Beras SPHP Bulog": {
-      "harga": 11901,
+      "harga": 11895,
       "harga_lama": 11901,
       "satuan": "kg",
-      "tanggal": "2026-06-09"
+      "tanggal": "2026-06-10"
     },
     "Gula Pasir Curah": {
-      "harga": 16872,
+      "harga": 16875,
       "harga_lama": 16872,
       "satuan": "kg",
-      "tanggal": "2026-06-09"
+      "tanggal": "2026-06-10"
     },
     "Minyak Goreng Sawit Kemasan Premium": {
-      "harga": 21616,
+      "harga": 21607,
       "harga_lama": 21616,
       "satuan": "lt",
-      "tanggal": "2026-06-09"
+      "tanggal": "2026-06-10"
     },
     "Minyak Goreng Sawit Curah": {
       "harga": 19409,
       "harga_lama": 19409,
       "satuan": "lt",
-      "tanggal": "2026-06-09"
+      "tanggal": "2026-06-10"
     },
     "Minyakita": {
       "harga": 15689,
       "harga_lama": 15689,
       "satuan": "lt",
-      "tanggal": "2026-06-09"
+      "tanggal": "2026-06-10"
     },
     "Daging Sapi Paha Belakang": {
-      "harga": 124178,
-      "harga_lama": 124151,
+      "harga": 124318,
+      "harga_lama": 124178,
       "satuan": "kg",
-      "tanggal": "2026-06-09"
+      "tanggal": "2026-06-10"
     },
     "Daging Ayam Ras": {
-      "harga": 32893,
-      "harga_lama": 33476,
+      "harga": 32322,
+      "harga_lama": 32893,
       "satuan": "kg",
-      "tanggal": "2026-06-09"
+      "tanggal": "2026-06-10"
     },
     "Telur Ayam Ras": {
-      "harga": 25316,
-      "harga_lama": 25338,
+      "harga": 25298,
+      "harga_lama": 25316,
       "satuan": "kg",
-      "tanggal": "2026-06-09"
+      "tanggal": "2026-06-10"
     },
     "Tepung Terigu": {
       "harga": 11592,
       "harga_lama": 11592,
       "satuan": "kg",
-      "tanggal": "2026-06-09"
+      "tanggal": "2026-06-10"
     },
     "Kedelai Impor": {
-      "harga": 12159,
+      "harga": 12168,
       "harga_lama": 12159,
       "satuan": "kg",
-      "tanggal": "2026-06-09"
+      "tanggal": "2026-06-10"
     },
     "Cabai Merah Keriting": {
-      "harga": 43470,
-      "harga_lama": 43506,
+      "harga": 42494,
+      "harga_lama": 43470,
       "satuan": "kg",
-      "tanggal": "2026-06-09"
+      "tanggal": "2026-06-10"
     },
     "Cabai Rawit Merah": {
-      "harga": 61456,
-      "harga_lama": 60509,
+      "harga": 61842,
+      "harga_lama": 61456,
       "satuan": "kg",
-      "tanggal": "2026-06-09"
+      "tanggal": "2026-06-10"
     },
     "Cabai Merah Besar": {
-      "harga": 46785,
-      "harga_lama": 47294,
+      "harga": 46610,
+      "harga_lama": 46785,
       "satuan": "kg",
-      "tanggal": "2026-06-09"
+      "tanggal": "2026-06-10"
     },
     "Bawang Merah": {
-      "harga": 45368,
-      "harga_lama": 45355,
+      "harga": 44860,
+      "harga_lama": 45368,
       "satuan": "kg",
-      "tanggal": "2026-06-09"
+      "tanggal": "2026-06-10"
     },
     "Bawang Putih Honan": {
-      "harga": 31046,
-      "harga_lama": 29963,
+      "harga": 32171,
+      "harga_lama": 31046,
       "satuan": "kg",
-      "tanggal": "2026-06-09"
+      "tanggal": "2026-06-10"
     }
   }
 }
