@@ -1,245 +1,245 @@
 {
-  "updated": "2026-09-15",
+  "updated": "2026-09-17",
   "data": {
     "Beras Premium": {
-      "harga": 15775,
-      "harga_lama": 15800,
-      "harga_raw": "Rp 15.775Kg",
-      "tanggal": "2026-09-15"
+      "harga": 15700,
+      "harga_lama": 15775,
+      "harga_raw": "Rp 15.700Kg",
+      "tanggal": "2026-09-17"
     },
     "Beras Medium": {
-      "harga": 13750,
-      "harga_lama": 13833,
-      "harga_raw": "Rp 13.750Kg",
-      "tanggal": "2026-09-15"
+      "harga": 13667,
+      "harga_lama": 13750,
+      "harga_raw": "Rp 13.667Kg",
+      "tanggal": "2026-09-17"
     },
     "Beras Medium Bulog": {
-      "harga": 12475,
-      "harga_lama": 12467,
-      "harga_raw": "Rp 12.475Kg",
-      "tanggal": "2026-09-15"
+      "harga": 12467,
+      "harga_lama": 12475,
+      "harga_raw": "Rp 12.467Kg",
+      "tanggal": "2026-09-17"
     },
     "Gula Pasir Dalam Negeri": {
-      "harga": 17375,
-      "harga_lama": 17333,
-      "harga_raw": "Rp 17.375Kg",
-      "tanggal": "2026-09-15"
+      "harga": 17500,
+      "harga_lama": 17375,
+      "harga_raw": "Rp 17.500Kg",
+      "tanggal": "2026-09-17"
     },
     "Minyak Goreng Kemasan Sederhana 2 Liter": {
-      "harga": 41250,
-      "harga_lama": 41667,
-      "harga_raw": "Rp 41.2502 Liter",
-      "tanggal": "2026-09-15"
+      "harga": 40000,
+      "harga_lama": 41250,
+      "harga_raw": "Rp 40.0002 Liter",
+      "tanggal": "2026-09-17"
     },
     "Minyak Goreng Kemasan MINYAKITA 1 Liter": {
-      "harga": 16025,
-      "harga_lama": 16133,
-      "harga_raw": "Rp 16.025Liter",
-      "tanggal": "2026-09-15"
+      "harga": 15700,
+      "harga_lama": 16025,
+      "harga_raw": "Rp 15.700Liter",
+      "tanggal": "2026-09-17"
     },
     "Daging Sapi Murni": {
-      "harga": 82400,
-      "harga_lama": 59867,
-      "harga_raw": "Rp 82.400Kg",
-      "tanggal": "2026-09-15"
+      "harga": 59867,
+      "harga_lama": 82400,
+      "harga_raw": "Rp 59.867Kg",
+      "tanggal": "2026-09-17"
     },
     "Daging Ayam Broiler": {
-      "harga": 40250,
-      "harga_lama": 39667,
-      "harga_raw": "Rp 40.250Kg",
-      "tanggal": "2026-09-15"
+      "harga": 41000,
+      "harga_lama": 40250,
+      "harga_raw": "Rp 41.000Kg",
+      "tanggal": "2026-09-17"
     },
     "Daging Ayam Kampung": {
-      "harga": 62750,
-      "harga_lama": 62000,
-      "harga_raw": "Rp 62.750Kg",
-      "tanggal": "2026-09-15"
+      "harga": 63000,
+      "harga_lama": 62750,
+      "harga_raw": "Rp 63.000Kg",
+      "tanggal": "2026-09-17"
     },
     "Telur Ayam Ras / Petelur": {
-      "harga": 25500,
-      "harga_lama": 24167,
-      "harga_raw": "Rp 25.500Kg",
-      "tanggal": "2026-09-15"
+      "harga": 26333,
+      "harga_lama": 25500,
+      "harga_raw": "Rp 26.333Kg",
+      "tanggal": "2026-09-17"
     },
     "Telur Ayam Kampung": {
-      "harga": 60500,
-      "harga_lama": 60667,
-      "harga_raw": "Rp 60.500Kg",
-      "tanggal": "2026-09-15"
+      "harga": 60667,
+      "harga_lama": 60500,
+      "harga_raw": "Rp 60.667Kg",
+      "tanggal": "2026-09-17"
     },
     "Susu Kental Manis Merk Bendera": {
       "harga": 13000,
       "harga_lama": 13000,
       "harga_raw": "Rp 13.000397 gr/kl",
-      "tanggal": "2026-09-15"
+      "tanggal": "2026-09-17"
     },
     "Susu Kental Manis Merk Indomilk": {
       "harga": 13000,
       "harga_lama": 13000,
       "harga_raw": "Rp 13.000390 gr/kl",
-      "tanggal": "2026-09-15"
+      "tanggal": "2026-09-17"
     },
     "Susu Bubuk Merk Bendera (Instant)": {
-      "harga": 50250,
-      "harga_lama": 51333,
-      "harga_raw": "Rp 50.250400 gr/dos",
-      "tanggal": "2026-09-15"
+      "harga": 50333,
+      "harga_lama": 50250,
+      "harga_raw": "Rp 50.333400 gr/dos",
+      "tanggal": "2026-09-17"
     },
     "Susu Bubuk Merk Indomilk (Instant)": {
-      "harga": 50250,
-      "harga_lama": 51333,
-      "harga_raw": "Rp 50.250400 gr/dos",
-      "tanggal": "2026-09-15"
+      "harga": 50333,
+      "harga_lama": 50250,
+      "harga_raw": "Rp 50.333400 gr/dos",
+      "tanggal": "2026-09-17"
     },
     "Jagung Pipilan Kering": {
       "harga": 9000,
       "harga_lama": 9000,
       "harga_raw": "Rp 9.000Kg",
-      "tanggal": "2026-09-15"
+      "tanggal": "2026-09-17"
     },
     "Garam Bata": {
-      "harga": 1125,
-      "harga_lama": 1167,
-      "harga_raw": "Rp 1.125Buah",
-      "tanggal": "2026-09-15"
+      "harga": 1000,
+      "harga_lama": 1125,
+      "harga_raw": "Rp 1.000Buah",
+      "tanggal": "2026-09-17"
     },
     "Garam Dapur": {
-      "harga": 9250,
-      "harga_lama": 9333,
-      "harga_raw": "Rp 9.250Kg",
-      "tanggal": "2026-09-15"
+      "harga": 9000,
+      "harga_lama": 9250,
+      "harga_raw": "Rp 9.000Kg",
+      "tanggal": "2026-09-17"
     },
     "Segitiga Biru (Kw Medium)": {
-      "harga": 12625,
-      "harga_lama": 12833,
-      "harga_raw": "Rp 12.625Kg",
-      "tanggal": "2026-09-15"
+      "harga": 12667,
+      "harga_lama": 12625,
+      "harga_raw": "Rp 12.667Kg",
+      "tanggal": "2026-09-17"
     },
     "Kacang Kedelai Eks Impor": {
-      "harga": 13500,
-      "harga_lama": 13333,
-      "harga_raw": "Rp 13.500Kg",
-      "tanggal": "2026-09-15"
+      "harga": 13333,
+      "harga_lama": 13500,
+      "harga_raw": "Rp 13.333Kg",
+      "tanggal": "2026-09-17"
     },
     "Indomie Rasa Kari Ayam": {
       "harga": 3500,
       "harga_lama": 3500,
       "harga_raw": "Rp 3.500Bungkus",
-      "tanggal": "2026-09-15"
+      "tanggal": "2026-09-17"
     },
     "Cabe Merah Keriting (Medium)": {
-      "harga": 41750,
-      "harga_lama": 40667,
-      "harga_raw": "Rp 41.750Kg",
-      "tanggal": "2026-09-15"
+      "harga": 44000,
+      "harga_lama": 41750,
+      "harga_raw": "Rp 44.000Kg",
+      "tanggal": "2026-09-17"
     },
     "Cabe Merah Besar (Medium)": {
-      "harga": 23250,
-      "harga_lama": 23667,
-      "harga_raw": "Rp 23.250Kg",
-      "tanggal": "2026-09-15"
+      "harga": 21000,
+      "harga_lama": 23250,
+      "harga_raw": "Rp 21.000Kg",
+      "tanggal": "2026-09-17"
     },
     "Cabe Rawit Merah (Medium)": {
-      "harga": 67000,
+      "harga": 66000,
       "harga_lama": 67000,
-      "harga_raw": "Rp 67.000Kg",
-      "tanggal": "2026-09-15"
+      "harga_raw": "Rp 66.000Kg",
+      "tanggal": "2026-09-17"
     },
     "Bawang Merah (Medium)": {
-      "harga": 29750,
-      "harga_lama": 29667,
-      "harga_raw": "Rp 29.750Kg",
-      "tanggal": "2026-09-15"
+      "harga": 29000,
+      "harga_lama": 29750,
+      "harga_raw": "Rp 29.000Kg",
+      "tanggal": "2026-09-17"
     },
     "Bawang Putih (Medium)": {
-      "harga": 30750,
-      "harga_lama": 30333,
-      "harga_raw": "Rp 30.750Kg",
-      "tanggal": "2026-09-15"
+      "harga": 31000,
+      "harga_lama": 30750,
+      "harga_raw": "Rp 31.000Kg",
+      "tanggal": "2026-09-17"
     },
     "Ikan Asin Teri": {
-      "harga": 98000,
-      "harga_lama": 97333,
-      "harga_raw": "Rp 98.000Kg",
-      "tanggal": "2026-09-15"
+      "harga": 94000,
+      "harga_lama": 98000,
+      "harga_raw": "Rp 94.000Kg",
+      "tanggal": "2026-09-17"
     },
     "Kacang Hijau": {
-      "harga": 30250,
-      "harga_lama": 32000,
-      "harga_raw": "Rp 30.250Kg",
-      "tanggal": "2026-09-15"
+      "harga": 29667,
+      "harga_lama": 30250,
+      "harga_raw": "Rp 29.667Kg",
+      "tanggal": "2026-09-17"
     },
     "Kacang Tanah (Medium)": {
-      "harga": 46000,
+      "harga": 45333,
       "harga_lama": 46000,
-      "harga_raw": "Rp 46.000Kg",
-      "tanggal": "2026-09-15"
+      "harga_raw": "Rp 45.333Kg",
+      "tanggal": "2026-09-17"
     },
     "Ketela Pohon": {
-      "harga": 8250,
-      "harga_lama": 8000,
-      "harga_raw": "Rp 8.250Kg",
-      "tanggal": "2026-09-15"
+      "harga": 8333,
+      "harga_lama": 8250,
+      "harga_raw": "Rp 8.333Kg",
+      "tanggal": "2026-09-17"
     },
     "Kol/Kubis": {
-      "harga": 9250,
-      "harga_lama": 9000,
-      "harga_raw": "Rp 9.250Kg",
-      "tanggal": "2026-09-15"
+      "harga": 8000,
+      "harga_lama": 9250,
+      "harga_raw": "Rp 8.000Kg",
+      "tanggal": "2026-09-17"
     },
     "Kentang": {
-      "harga": 14250,
-      "harga_lama": 13667,
-      "harga_raw": "Rp 14.250Kg",
-      "tanggal": "2026-09-15"
+      "harga": 14667,
+      "harga_lama": 14250,
+      "harga_raw": "Rp 14.667Kg",
+      "tanggal": "2026-09-17"
     },
     "Tomat": {
       "harga": 6000,
-      "harga_lama": 5333,
+      "harga_lama": 6000,
       "harga_raw": "Rp 6.000Kg",
-      "tanggal": "2026-09-15"
+      "tanggal": "2026-09-17"
     },
     "Wortel": {
-      "harga": 13750,
-      "harga_lama": 13667,
-      "harga_raw": "Rp 13.750Kg",
-      "tanggal": "2026-09-15"
+      "harga": 12667,
+      "harga_lama": 13750,
+      "harga_raw": "Rp 12.667Kg",
+      "tanggal": "2026-09-17"
     },
     "Buncis": {
-      "harga": 11500,
-      "harga_lama": 12667,
-      "harga_raw": "Rp 11.500Kg",
-      "tanggal": "2026-09-15"
+      "harga": 9667,
+      "harga_lama": 11500,
+      "harga_raw": "Rp 9.667Kg",
+      "tanggal": "2026-09-17"
     },
     "Ikan Bandeng": {
-      "harga": 35500,
-      "harga_lama": 35333,
-      "harga_raw": "Rp 35.500Kg",
-      "tanggal": "2026-09-15"
+      "harga": 34667,
+      "harga_lama": 35500,
+      "harga_raw": "Rp 34.667Kg",
+      "tanggal": "2026-09-17"
     },
     "Ikan Kembung": {
       "harga": 38000,
-      "harga_lama": 37333,
+      "harga_lama": 38000,
       "harga_raw": "Rp 38.000Kg",
-      "tanggal": "2026-09-15"
+      "tanggal": "2026-09-17"
     },
     "Ikan Tuna": {
-      "harga": 45500,
-      "harga_lama": 46667,
-      "harga_raw": "Rp 45.500Kg",
-      "tanggal": "2026-09-15"
+      "harga": 44000,
+      "harga_lama": 45500,
+      "harga_raw": "Rp 44.000Kg",
+      "tanggal": "2026-09-17"
     },
     "Ikan Tongkol": {
-      "harga": 39000,
+      "harga": 38667,
       "harga_lama": 39000,
-      "harga_raw": "Rp 39.000Kg",
-      "tanggal": "2026-09-15"
+      "harga_raw": "Rp 38.667Kg",
+      "tanggal": "2026-09-17"
     },
     "Ikan Cakalang": {
-      "harga": 39000,
+      "harga": 38667,
       "harga_lama": 39000,
-      "harga_raw": "Rp 39.000Kg",
-      "tanggal": "2026-09-15"
+      "harga_raw": "Rp 38.667Kg",
+      "tanggal": "2026-09-17"
     }
   }
 }
