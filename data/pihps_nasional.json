@@ -1,8 +1,8 @@
 {
-  "updated": "2026-10-09",
+  "updated": "2026-10-10",
   "data": {
     "Beras Medium": {
-      "harga": 13154,
+      "harga": 13156,
       "harga_lama": 13154,
       "satuan": "kg",
       "tanggal": "2026-10-09"
@@ -14,13 +14,13 @@
       "tanggal": "2026-10-09"
     },
     "Beras SPHP Bulog": {
-      "harga": 11905,
+      "harga": 11915,
       "harga_lama": 11905,
       "satuan": "kg",
       "tanggal": "2026-10-09"
     },
     "Gula Pasir Curah": {
-      "harga": 17104,
+      "harga": 17106,
       "harga_lama": 17104,
       "satuan": "kg",
       "tanggal": "2026-10-09"
@@ -44,61 +44,61 @@
       "tanggal": "2026-10-09"
     },
     "Daging Sapi Paha Belakang": {
-      "harga": 132509,
+      "harga": 132649,
       "harga_lama": 132509,
       "satuan": "kg",
       "tanggal": "2026-10-09"
     },
     "Daging Ayam Ras": {
-      "harga": 38082,
+      "harga": 38038,
       "harga_lama": 38082,
       "satuan": "kg",
       "tanggal": "2026-10-09"
     },
     "Telur Ayam Ras": {
-      "harga": 24187,
+      "harga": 24154,
       "harga_lama": 24187,
       "satuan": "kg",
       "tanggal": "2026-10-09"
     },
     "Tepung Terigu": {
-      "harga": 11513,
+      "harga": 11500,
       "harga_lama": 11513,
       "satuan": "kg",
       "tanggal": "2026-10-09"
     },
     "Kedelai Impor": {
-      "harga": 12301,
+      "harga": 12315,
       "harga_lama": 12301,
       "satuan": "kg",
       "tanggal": "2026-10-09"
     },
     "Cabai Merah Keriting": {
-      "harga": 47442,
+      "harga": 48406,
       "harga_lama": 47442,
       "satuan": "kg",
       "tanggal": "2026-10-09"
     },
     "Cabai Rawit Merah": {
-      "harga": 66327,
+      "harga": 65923,
       "harga_lama": 66327,
       "satuan": "kg",
       "tanggal": "2026-10-09"
     },
     "Cabai Merah Besar": {
-      "harga": 37105,
+      "harga": 38164,
       "harga_lama": 37105,
       "satuan": "kg",
       "tanggal": "2026-10-09"
     },
     "Bawang Merah": {
-      "harga": 26392,
+      "harga": 26682,
       "harga_lama": 26392,
       "satuan": "kg",
       "tanggal": "2026-10-09"
     },
     "Bawang Putih Honan": {
-      "harga": 28400,
+      "harga": 28456,
       "harga_lama": 28400,
       "satuan": "kg",
       "tanggal": "2026-10-09"

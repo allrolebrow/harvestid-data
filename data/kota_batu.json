@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-09",
+  "updated": "2026-10-10",
   "data": {
     "Beras Medium": {
       "harga": 13400,
@@ -44,7 +44,7 @@
       "tanggal": "2026-10-09"
     },
     "Daging Ayam Ras": {
-      "harga": 39000,
+      "harga": 38000,
       "harga_lama": 39000,
       "satuan": "kg",
       "tanggal": "2026-10-09"
@@ -62,13 +62,13 @@
       "tanggal": "2026-10-09"
     },
     "Kedelai Impor": {
-      "harga": 12000,
+      "harga": 12500,
       "harga_lama": 12000,
       "satuan": "kg",
       "tanggal": "2026-10-09"
     },
     "Cabai Merah Keriting": {
-      "harga": 42500,
+      "harga": 45000,
       "harga_lama": 42500,
       "satuan": "kg",
       "tanggal": "2026-10-09"
@@ -80,7 +80,7 @@
       "tanggal": "2026-10-09"
     },
     "Cabai Merah Besar": {
-      "harga": 32500,
+      "harga": 35000,
       "harga_lama": 32500,
       "satuan": "kg",
       "tanggal": "2026-10-09"
