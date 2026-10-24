@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-23",
+  "updated": "2026-10-24",
   "data": {
     "Beras Medium": {
       "harga": 13500,
@@ -68,19 +68,19 @@
       "tanggal": "2026-10-23"
     },
     "Cabai Merah Keriting": {
-      "harga": 47500,
+      "harga": 50000,
       "harga_lama": 47500,
       "satuan": "kg",
       "tanggal": "2026-10-23"
     },
     "Cabai Rawit Merah": {
-      "harga": 57500,
+      "harga": 60000,
       "harga_lama": 57500,
       "satuan": "kg",
       "tanggal": "2026-10-23"
     },
     "Cabai Merah Besar": {
-      "harga": 42500,
+      "harga": 45000,
       "harga_lama": 42500,
       "satuan": "kg",
       "tanggal": "2026-10-23"
