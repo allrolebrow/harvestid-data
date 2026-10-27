@@ -1,101 +1,101 @@
 {
-  "updated": "2026-10-25",
+  "updated": "2026-10-27",
   "data": {
     "Beras Medium": {
       "harga": 13500,
       "harga_lama": 13500,
       "satuan": "kg",
-      "tanggal": "2026-10-23"
+      "tanggal": "2026-10-27"
     },
     "Beras Premium": {
       "harga": 14900,
       "harga_lama": 14900,
       "satuan": "kg",
-      "tanggal": "2026-10-23"
+      "tanggal": "2026-10-27"
     },
     "Beras SPHP Bulog": {
       "harga": 12000,
       "harga_lama": 12000,
       "satuan": "kg",
-      "tanggal": "2026-10-23"
+      "tanggal": "2026-10-27"
     },
     "Gula Pasir Curah": {
       "harga": 17000,
       "harga_lama": 17000,
       "satuan": "kg",
-      "tanggal": "2026-10-23"
+      "tanggal": "2026-10-27"
     },
     "Minyak Goreng Sawit Kemasan Premium": {
       "harga": 22000,
       "harga_lama": 22000,
       "satuan": "lt",
-      "tanggal": "2026-10-23"
+      "tanggal": "2026-10-27"
     },
     "Minyakita": {
       "harga": 15700,
       "harga_lama": 15700,
       "satuan": "lt",
-      "tanggal": "2026-10-23"
+      "tanggal": "2026-10-27"
     },
     "Daging Sapi Paha Belakang": {
       "harga": 135000,
       "harga_lama": 135000,
       "satuan": "kg",
-      "tanggal": "2026-10-23"
+      "tanggal": "2026-10-27"
     },
     "Daging Ayam Ras": {
       "harga": 37000,
       "harga_lama": 37000,
       "satuan": "kg",
-      "tanggal": "2026-10-23"
+      "tanggal": "2026-10-27"
     },
     "Telur Ayam Ras": {
       "harga": 24000,
       "harga_lama": 24000,
       "satuan": "kg",
-      "tanggal": "2026-10-23"
+      "tanggal": "2026-10-27"
     },
     "Tepung Terigu": {
       "harga": 12000,
       "harga_lama": 12000,
       "satuan": "kg",
-      "tanggal": "2026-10-23"
+      "tanggal": "2026-10-27"
     },
     "Kedelai Impor": {
       "harga": 12500,
       "harga_lama": 12500,
       "satuan": "kg",
-      "tanggal": "2026-10-23"
+      "tanggal": "2026-10-27"
     },
     "Cabai Merah Keriting": {
       "harga": 50000,
-      "harga_lama": 47500,
+      "harga_lama": 50000,
       "satuan": "kg",
-      "tanggal": "2026-10-23"
+      "tanggal": "2026-10-27"
     },
     "Cabai Rawit Merah": {
       "harga": 60000,
-      "harga_lama": 57500,
+      "harga_lama": 60000,
       "satuan": "kg",
-      "tanggal": "2026-10-23"
+      "tanggal": "2026-10-27"
     },
     "Cabai Merah Besar": {
       "harga": 45000,
-      "harga_lama": 42500,
+      "harga_lama": 45000,
       "satuan": "kg",
-      "tanggal": "2026-10-23"
+      "tanggal": "2026-10-27"
     },
     "Bawang Merah": {
       "harga": 27000,
       "harga_lama": 27000,
       "satuan": "kg",
-      "tanggal": "2026-10-23"
+      "tanggal": "2026-10-27"
     },
     "Bawang Putih Honan": {
       "harga": 29000,
       "harga_lama": 29000,
       "satuan": "kg",
-      "tanggal": "2026-10-23"
+      "tanggal": "2026-10-27"
     }
   }
 }
