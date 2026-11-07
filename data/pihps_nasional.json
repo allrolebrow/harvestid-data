@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-06",
+  "updated": "2026-11-07",
   "data": {
     "Beras Medium": {
       "harga": 13217,
@@ -50,19 +50,19 @@
       "tanggal": "2026-11-06"
     },
     "Daging Ayam Ras": {
-      "harga": 35441,
+      "harga": 35322,
       "harga_lama": 35441,
       "satuan": "kg",
       "tanggal": "2026-11-06"
     },
     "Telur Ayam Ras": {
-      "harga": 23271,
+      "harga": 23301,
       "harga_lama": 23271,
       "satuan": "kg",
       "tanggal": "2026-11-06"
     },
     "Tepung Terigu": {
-      "harga": 11509,
+      "harga": 11504,
       "harga_lama": 11509,
       "satuan": "kg",
       "tanggal": "2026-11-06"
@@ -74,31 +74,31 @@
       "tanggal": "2026-11-06"
     },
     "Cabai Merah Keriting": {
-      "harga": 47976,
+      "harga": 48220,
       "harga_lama": 47976,
       "satuan": "kg",
       "tanggal": "2026-11-06"
     },
     "Cabai Rawit Merah": {
-      "harga": 53325,
+      "harga": 53658,
       "harga_lama": 53325,
       "satuan": "kg",
       "tanggal": "2026-11-06"
     },
     "Cabai Merah Besar": {
-      "harga": 34838,
+      "harga": 35461,
       "harga_lama": 34838,
       "satuan": "kg",
       "tanggal": "2026-11-06"
     },
     "Bawang Merah": {
-      "harga": 27489,
+      "harga": 27656,
       "harga_lama": 27489,
       "satuan": "kg",
       "tanggal": "2026-11-06"
     },
     "Bawang Putih Honan": {
-      "harga": 27664,
+      "harga": 27713,
       "harga_lama": 27664,
       "satuan": "kg",
       "tanggal": "2026-11-06"
