@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-20",
+  "updated": "2026-11-21",
   "data": {
     "Beras Medium": {
       "harga": 13500,
@@ -68,7 +68,7 @@
       "tanggal": "2026-11-20"
     },
     "Cabai Merah Keriting": {
-      "harga": 50000,
+      "harga": 49000,
       "harga_lama": 50000,
       "satuan": "kg",
       "tanggal": "2026-11-20"
@@ -92,7 +92,7 @@
       "tanggal": "2026-11-20"
     },
     "Bawang Putih Honan": {
-      "harga": 29000,
+      "harga": 28000,
       "harga_lama": 29000,
       "satuan": "kg",
       "tanggal": "2026-11-20"
